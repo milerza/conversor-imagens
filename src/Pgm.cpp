@@ -24,6 +24,7 @@ void Pgm::escrever_pgm(std::string imagem_pgm){
     inFile.open(imagem_pgm.c_str());
     
     inFile << "P2";
+    inFile << "49";
 
     inFile << this->largura << " " << this->altura << "\n";
 
