@@ -17,14 +17,18 @@ void Ppm::inicializar_matriz_ppm(){
 
 void Ppm::ler_ppm(std::string imagem_ppm){
     std::ifstream inFile;
-    std::string formato;
+    std::string verificador;
     int vermelho, verde, azul;
 
     inFile.open(imagem_ppm.c_str());
     
-    inFile >> formato;
+    inFile >> verificador;
+    if(verificador != "P3"){
+        return;
+    }
 
-    if(formato != "P3"){
+    inFile >> verificador;
+    if(verificador != "255"){
         return;
     }
 
