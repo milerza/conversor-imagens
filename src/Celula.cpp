@@ -1,4 +1,4 @@
-#include "include/Celula.hpp"
+#include "Celula.hpp"
 
 Celula::Celula(int vermelho, int verde, int azul){
     this->vermelho = vermelho;

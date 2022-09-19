@@ -8,8 +8,8 @@ private:
      int azul; 
 
 public:
-    Celula();
-    Celula(int vermelho, int verde, int azul);
+    //Celula();
+    Celula(int vermelho=0, int verde=0, int azul=0);
     int rgb_para_cinza();
 };
 

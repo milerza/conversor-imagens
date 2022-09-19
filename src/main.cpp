@@ -3,15 +3,17 @@
 #include <iostream>
 
 int main(int argc, char ** argv){
-    char command;
-    char opcao;
+    //char command;
+    //char opcao; 
 
     std::string caminho_imagem_ppm;
     std::string caminho_imagem_pgm;
 
+    std::cin >> caminho_imagem_ppm;
+    std::cin >> caminho_imagem_pgm;
+
     Pgm * imagem_cinza;
     Ppm * image_colorida = new Ppm();
-    
 
     image_colorida->ler_ppm(caminho_imagem_ppm);
     imagem_cinza = image_colorida->converter_ppm_para_pgm();

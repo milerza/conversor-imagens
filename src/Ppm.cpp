@@ -3,15 +3,15 @@
 #include <fstream>
 
 void Ppm::inicializar_matriz_ppm(){
-    if((this->altura && this->largura) <= 0){
+    /* if((this->altura && this->largura) <= 0){
         throw;
     }
-
+    */
     this->celulas = new Celula*[altura];
 
     for(int i = 0; i< altura; ++i) 
     {
-        celulas[i] = new Celula[largura];
+        this->celulas[i] = new Celula[largura];
     }
 }
 
