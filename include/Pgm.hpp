@@ -1,6 +1,11 @@
 #ifndef PGM_H
 #define PGM_H
 
+extern "C" {
+#include "memlog.h"
+#include "msgassert.h" 
+}
+
 #include <iostream>
 #include "Celula.hpp"
 

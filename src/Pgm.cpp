@@ -19,6 +19,7 @@ Pgm::Pgm(int largura, int altura){
 }
 
 void Pgm::escrever_pgm(std::string imagem_pgm){
+    defineFaseMemLog(3);
     std::ofstream inFile;
 
     inFile.open(imagem_pgm.c_str());
@@ -35,6 +36,7 @@ void Pgm::escrever_pgm(std::string imagem_pgm){
             } else{
                 inFile << this->celulas[i][j];
             }
+            leMemLog((int)this->celulas[i][j], sizeof(int), 3);
         }
         inFile << "\n";
     }
