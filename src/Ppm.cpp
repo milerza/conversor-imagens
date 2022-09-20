@@ -2,6 +2,11 @@
 
 #include <fstream>
 
+int rgb_para_cinza(int vermelho, int verde, int azul){
+    double cinza = 49.0/255.0 * (0.30 * vermelho + 0.59 * verde + 0.11 * azul);
+    return (int)cinza;
+}
+
 void Ppm::inicializar_matriz_ppm(){
     /* if((this->altura && this->largura) <= 0){
         throw;
@@ -9,49 +14,51 @@ void Ppm::inicializar_matriz_ppm(){
     */
     this->celulas = new Celula*[altura];
 
-    for(int i = 0; i< altura; ++i) 
+    for(int i = 0; i< altura; i++) 
     {
         this->celulas[i] = new Celula[largura];
+        
     }
 }
 
 void Ppm::ler_ppm(std::string imagem_ppm){
     std::ifstream inFile;
-    std::string verificador;
-    int vermelho, verde, azul;
+    std::string verificador, verificador2;
 
     inFile.open(imagem_ppm.c_str());
     
     inFile >> verificador;
-    if(verificador != "P3"){
-        return;
-    }
-
-    inFile >> verificador;
-    if(verificador != "255"){
-        return;
-    }
 
     inFile >> this->largura >> this->altura;
 
+    inFile >> verificador2;
+
+    /*if(verificador != "255"){
+        return;
+    }*/
+
+    this->inicializar_matriz_ppm();
+    
     for(int i = 0; i< this->altura; i++){
-        for(int j = 0; j < this->largura; i++){
-            inFile >> vermelho >> verde >> azul;
-            celulas[i][j] = Celula(vermelho, verde,azul);
+        for(int j = 0; j < this->largura; j++){
+            inFile >> celulas[i][j].vermelho >> celulas[i][j].verde >> celulas[i][j].azul;
         }
     }
+    
+
+    inFile.close();
 
 }
 
 Pgm * Ppm::converter_ppm_para_pgm(){
     Pgm * imagem_cinza = new Pgm(this->largura, this->altura);
     for(int i = 0; i< this->altura; i++){
-        for(int j = 0; j < this->largura; i++){
-            imagem_cinza->celulas[i][j] = this->celulas[i][j].rgb_para_cinza();
+        for(int j = 0; j < this->largura; j++){
+            imagem_cinza->celulas[i][j] = rgb_para_cinza(celulas[i][j].vermelho, celulas[i][j].verde, celulas[i][j].azul);
         }
     }
+    std::cout << "aloca" << std::endl;
     return imagem_cinza;
 }
 
-Ppm::~Ppm(){}
 

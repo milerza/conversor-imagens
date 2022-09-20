@@ -3,31 +3,30 @@
 #include <iostream>
 
 int main(int argc, char ** argv){
-    //char command;
-    //char opcao; 
+    char command;
+    char opcao; 
 
-    std::string caminho_imagem_ppm;
-    std::string caminho_imagem_pgm;
+    std::string caminho_imagem;
 
-    std::cin >> caminho_imagem_ppm;
-    std::cin >> caminho_imagem_pgm;
+    std::cin >> caminho_imagem;
 
     Pgm * imagem_cinza;
     Ppm * image_colorida = new Ppm();
 
-    image_colorida->ler_ppm(caminho_imagem_ppm);
+
+    image_colorida->ler_ppm(caminho_imagem.append(".ppm"));
+
     imagem_cinza = image_colorida->converter_ppm_para_pgm();
-    imagem_cinza->escrever_pgm(caminho_imagem_pgm);
+    imagem_cinza->escrever_pgm(caminho_imagem.append(".pgm"));
 
     /*while (std::cin >> command) {
         switch (command){
             case '-i':{
-                std::cin >> caminho_imagem_ppm;
+                std::cout << caminho_imagem.append(".ppm") << std::endl;
                 break;
             }
             case '-o':{           
-                break;
-                std::cout << caminho_imagem_ppm << std::endl;
+                std::cout << caminho_imagem.append(".pgm") << std::endl;
                 break;
             }
             case '-p':{
@@ -47,8 +46,7 @@ int main(int argc, char ** argv){
                 break;
             }     
         } 
-
-    }*/
-    
+    }
+    */
     return 0;
 }

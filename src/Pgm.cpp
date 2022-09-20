@@ -23,19 +23,19 @@ void Pgm::escrever_pgm(std::string imagem_pgm){
 
     inFile.open(imagem_pgm.c_str());
     
-    inFile << "P2";
-    inFile << "49";
-
-    inFile << this->largura << " " << this->altura << "\n";
+    inFile << "P2" << "\n";
+    inFile << this->largura <<" "<< this->altura<< "\n";
+    inFile << "49" << "\n";
 
     for(int i = 0; i< this->altura; i++){
-        for(int j = 0; j < this->largura; i++){
-            inFile << celulas[i][j] << " ";
+        for(int j = 0; j < this->largura; j++){
+            
+            if(j < this->largura - 1){
+                inFile << this->celulas[i][j] << " ";
+            } else{
+                inFile << this->celulas[i][j];
+            }
         }
         inFile << "\n";
     }
-}
-
-Pgm::~Pgm(){
-
 }

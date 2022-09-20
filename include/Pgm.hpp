@@ -15,7 +15,6 @@ public:
 public:
     Pgm(int largura, int altura);
     void escrever_pgm(std::string imagem_pgm);
-    ~Pgm();
 };
 
 

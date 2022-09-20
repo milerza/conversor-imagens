@@ -18,8 +18,6 @@ private:
 public:
     void ler_ppm(std::string imagem_ppm);
     Pgm * converter_ppm_para_pgm();
-    ~Ppm();
-
 };
 
 #endif
